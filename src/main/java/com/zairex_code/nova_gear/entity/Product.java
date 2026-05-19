@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,13 +22,22 @@ public class Product {
     @Column(nullable = false,length = 100)
     private String name;
 
-    @Column(length = 255)
+    @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column()
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
+    @Column(nullable = false)
     private Integer stock;
+
+    @Column(name = "image_url")
     private String imageUrl;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id" , nullable = false)
+    private Category categories;
+
+
 
 }
