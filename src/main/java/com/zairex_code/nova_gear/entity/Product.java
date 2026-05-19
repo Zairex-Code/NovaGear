@@ -1,11 +1,11 @@
 package com.zairex_code.nova_gear.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
-
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
-
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -34,10 +34,16 @@ public class Product {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id" , nullable = false)
     private Category categories;
 
+    @CreationTimestamp
+    @Column(updatable = false, nullable = false)
+    private LocalDateTime createdAt;
 
+    @UpdateTimestamp
+    @Column(name = "updated_at", updatable = false, nullable = false)
+    private LocalDateTime updatedAt;
 
 }
