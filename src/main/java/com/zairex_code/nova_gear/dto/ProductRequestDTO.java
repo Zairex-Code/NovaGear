@@ -10,7 +10,7 @@ public record ProductRequestDTO(
         @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
         String name,
 
-        @Positive(message = "Price must be greater than Zero")
+        @Positive(message = "Price must be greater than Zeroo")
         double price,
 
         @NotNull(message = "Category Id is required")

@@ -2,6 +2,7 @@ package com.zairex_code.nova_gear.service.impl;
 
 import com.zairex_code.nova_gear.dto.ProductRequestDTO;
 import com.zairex_code.nova_gear.dto.ProductResponseDTO;
+import com.zairex_code.nova_gear.entity.Category;
 import com.zairex_code.nova_gear.entity.Product;
 import com.zairex_code.nova_gear.mapper.ProductMapper;
 import com.zairex_code.nova_gear.repository.CategoryRepository;
@@ -16,10 +17,12 @@ import java.util.List;
 @Transactional
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
     private final ProductMapper productMapper;
 
-    public ProductServiceImpl(ProductRepository productRepository, ProductMapper productMapper){
+    public ProductServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository, ProductMapper productMapper){
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
         this.productMapper = productMapper;
     }
 
@@ -27,7 +30,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponseDTO createProduct(ProductRequestDTO request) {
         Product product = productMapper.toEntity(request);
+
+        Category category = categoryRepository.findById(request.categoryId())
+                .orElseThrow(() -> new RuntimeException("Category not found with ID: " + request.categoryId()));
+
+        product.setCategories(category);
+
         Product savedProduct = productRepository.save(product);
+        
         return productMapper.toResponse(savedProduct);
     }
 
