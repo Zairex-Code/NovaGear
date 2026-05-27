@@ -17,4 +17,13 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+
+    @ExceptionHandler(Exception.class)
+    public ProblemDetail handleGlobalException(Exception e){
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred");
+        problemDetail.setTitle("Internal Server Error");
+        problemDetail.setProperty("timestamp", Instant.now());
+        return problemDetail;
+    }
+
 }
