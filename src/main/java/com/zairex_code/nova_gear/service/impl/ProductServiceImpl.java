@@ -4,6 +4,7 @@ import com.zairex_code.nova_gear.dto.ProductRequestDTO;
 import com.zairex_code.nova_gear.dto.ProductResponseDTO;
 import com.zairex_code.nova_gear.entity.Category;
 import com.zairex_code.nova_gear.entity.Product;
+import com.zairex_code.nova_gear.exception.ResourceNotFoundException;
 import com.zairex_code.nova_gear.mapper.ProductMapper;
 import com.zairex_code.nova_gear.repository.CategoryRepository;
 import com.zairex_code.nova_gear.repository.ProductRepository;
@@ -32,9 +33,9 @@ public class ProductServiceImpl implements ProductService {
         Product product = productMapper.toEntity(request);
 
         Category category = categoryRepository.findById(request.categoryId())
-                .orElseThrow(() -> new RuntimeException("Category not found with ID: " + request.categoryId()));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with ID: " + request.categoryId()));
 
-        product.setCategories(category);
+        product.setCategory(category);
 
         Product savedProduct = productRepository.save(product);
         

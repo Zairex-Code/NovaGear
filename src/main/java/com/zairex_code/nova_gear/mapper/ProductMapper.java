@@ -16,7 +16,7 @@ public class ProductMapper {
                 product.getId(),
                 product.getName(),
                 product.getPrice().doubleValue(),
-                (product.getCategories() != null)? product.getCategories().getName() : "Uncategorized",
+                (product.getCategory() != null)? product.getCategory().getName() : "Uncategorized",
                 product.getCreatedAt()
         );
 
