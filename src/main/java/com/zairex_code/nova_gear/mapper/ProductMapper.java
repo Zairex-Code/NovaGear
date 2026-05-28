@@ -20,7 +20,6 @@ public class ProductMapper {
                 product.getCreatedAt()
         );
 
-
     }
 
     public Product toEntity(ProductRequestDTO dto){
@@ -30,7 +29,10 @@ public class ProductMapper {
 
         Product product = new Product();
         product.setName(dto.name());
+        product.setDescription(dto.Description());
         product.setPrice(BigDecimal.valueOf(dto.price()));
+        product.setStock(dto.stock());
+        product.setImageUrl(dto.imageUrl());
         return product;
 
     }
