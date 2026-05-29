@@ -42,6 +42,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CategoryResponseDto> getAllCategories(){
         return categoryRepository.findAll()
                 .stream()
