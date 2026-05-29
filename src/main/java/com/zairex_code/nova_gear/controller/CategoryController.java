@@ -44,8 +44,4 @@ public class CategoryController {
         CategoryResponseDto response = categoryService.getCategoryById(id);
         return ResponseEntity.ok(response);
     }
-
-
-
-
 }
