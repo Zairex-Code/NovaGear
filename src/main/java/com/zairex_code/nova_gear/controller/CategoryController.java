@@ -32,5 +32,20 @@ public class CategoryController {
         List<CategoryResponseDto> response = categoryService.getAllCategories();
         return ResponseEntity.ok(response);
     }
+    @GetMapping("/name/{name}")
+    public ResponseEntity<CategoryResponseDto> getCategoryByName(@PathVariable String name){
+        CategoryResponseDto response = categoryService.getCategoryByName(name);
+        return ResponseEntity.ok(response);
+    }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryResponseDto> getCategoryById(@PathVariable Long id){
+        CategoryResponseDto response = categoryService.getCategoryById(id);
+        return ResponseEntity.ok(response);
+    }
+
+
+
 
 }
