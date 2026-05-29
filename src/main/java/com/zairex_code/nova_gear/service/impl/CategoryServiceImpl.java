@@ -21,7 +21,11 @@ public class CategoryServiceImpl {
 
     @Override
      public CategoryResponseDto createCategory(CategoryRequestDTO request){
+        List<CategoryResponseDto> categories = getAllCategories();
         Category category = categoryMapper.toEntity(request);
+
+
+
 
 
 
@@ -31,8 +35,16 @@ public class CategoryServiceImpl {
     public List<CategoryResponseDto> getAllCategories(){
         return categoryRepository.findAll()
                 .stream()
-                .map(categoryMapper::toResponse)
+                .map(categoryMapper::toResponse) //We convert all categories to CategoryResponse
                 .toList();
+    }
+
+    @Override
+    public CategoryResponseDto getCategoryByName(String name){
+        return getAllCategories().stream()
+                .filter(category -> category.name().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
     }
 
 }

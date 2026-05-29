@@ -11,5 +11,6 @@ import java.util.List;
 public interface CategoryService {
     CategoryResponseDto createCategory(ProductRequestDTO dto);
     CategoryResponseDto getCategoryById(Long id);
+    CategoryResponseDto getCategoryByName(String name);
     List<CategoryResponseDto> getAllCategories();
 }
