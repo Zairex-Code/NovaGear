@@ -3,6 +3,7 @@ package com.zairex_code.nova_gear.service.impl;
 import com.zairex_code.nova_gear.dto.category.CategoryRequestDTO;
 import com.zairex_code.nova_gear.dto.category.CategoryResponseDto;
 import com.zairex_code.nova_gear.entity.Category;
+import com.zairex_code.nova_gear.exception.ResourceNotFoundException;
 import com.zairex_code.nova_gear.mapper.CategoryMapper;
 import com.zairex_code.nova_gear.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,12 @@ public class CategoryServiceImpl {
 
     @Override
      public CategoryResponseDto createCategory(CategoryRequestDTO request){
-        List<CategoryResponseDto> categories = getAllCategories();
+
         Category category = categoryMapper.toEntity(request);
+        CategoryResponseDto categoryFound = getCategoryByName(category.getName());
+        if (categoryFound != null){
+            return
+        }
 
 
 
@@ -44,7 +49,7 @@ public class CategoryServiceImpl {
         return getAllCategories().stream()
                 .filter(category -> category.name().equalsIgnoreCase(name))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new ResourceNotFoundException("Category with name " + name + "doesn't found"));
     }
 
 }
