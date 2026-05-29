@@ -1,4 +1,4 @@
-package com.zairex_code.nova_gear.dto;
+package com.zairex_code.nova_gear.dto.product;
 
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.URL;

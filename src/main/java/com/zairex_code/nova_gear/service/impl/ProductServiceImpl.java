@@ -1,7 +1,7 @@
 package com.zairex_code.nova_gear.service.impl;
 
-import com.zairex_code.nova_gear.dto.ProductRequestDTO;
-import com.zairex_code.nova_gear.dto.ProductResponseDTO;
+import com.zairex_code.nova_gear.dto.product.ProductRequestDTO;
+import com.zairex_code.nova_gear.dto.product.ProductResponseDTO;
 import com.zairex_code.nova_gear.entity.Category;
 import com.zairex_code.nova_gear.entity.Product;
 import com.zairex_code.nova_gear.exception.ResourceNotFoundException;
@@ -13,8 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @Transactional

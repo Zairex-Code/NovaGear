@@ -1,7 +1,7 @@
 package com.zairex_code.nova_gear.mapper;
 
-import com.zairex_code.nova_gear.dto.ProductRequestDTO;
-import com.zairex_code.nova_gear.dto.ProductResponseDTO;
+import com.zairex_code.nova_gear.dto.product.ProductRequestDTO;
+import com.zairex_code.nova_gear.dto.product.ProductResponseDTO;
 import com.zairex_code.nova_gear.entity.Product;
 import org.springframework.stereotype.Component;
 
