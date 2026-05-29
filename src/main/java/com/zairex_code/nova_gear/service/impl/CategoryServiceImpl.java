@@ -9,9 +9,11 @@ import com.zairex_code.nova_gear.mapper.CategoryMapper;
 import com.zairex_code.nova_gear.repository.CategoryRepository;
 import com.zairex_code.nova_gear.service.CategoryService;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
+
+@Transactional
 @Service
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
@@ -25,15 +27,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
      public CategoryResponseDto createCategory(CategoryRequestDTO request){
 
-        Category categoryToSave = categoryMapper.toEntity(request);
-        CategoryResponseDto categoryFound = getCategoryByName(categoryToSave.getName());
-        if (categoryFound == null){
-            Category categorySaved = categoryRepository.save(categoryToSave);
-            return categoryMapper.toResponse(categorySaved);
-        }else {
-            return null;
+        if (categoryRepository.existsByName(request.name())){
+            throw new RuntimeException("This category "+ request.name()+" already exist");
         }
-
+        Category categoryToSave = categoryMapper.toEntity(request);
+        Category categorySaved = categoryRepository.save(categoryToSave);
+        return categoryMapper.toResponse(categorySaved);
 
      }
 
