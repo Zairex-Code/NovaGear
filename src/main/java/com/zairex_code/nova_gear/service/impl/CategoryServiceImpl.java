@@ -23,15 +23,14 @@ public class CategoryServiceImpl {
     @Override
      public CategoryResponseDto createCategory(CategoryRequestDTO request){
 
-        Category category = categoryMapper.toEntity(request);
-        CategoryResponseDto categoryFound = getCategoryByName(category.getName());
-        if (categoryFound != null){
-            return
+        Category categoryToSave = categoryMapper.toEntity(request);
+        CategoryResponseDto categoryFound = getCategoryByName(categoryToSave.getName());
+        if (categoryFound == null){
+            Category categorySaved = categoryRepository.save(categoryToSave);
+            return categoryMapper.toResponse(categorySaved);
+        }else {
+            return null;
         }
-
-
-
-
 
 
      }
