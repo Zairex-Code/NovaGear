@@ -9,5 +9,6 @@ public interface ProductService {
     ProductResponseDTO createProduct(ProductRequestDTO product);
     Page<ProductResponseDTO>getAllProducts(Pageable pageable);
     ProductResponseDTO getProductById(Long id);
+    Page<ProductResponseDTO>getProductsByCategory(Long categoryId, Pageable pageable);
     
 }

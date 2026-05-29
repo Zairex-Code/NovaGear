@@ -34,5 +34,13 @@ public class ProductController {
     }
 
 
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<Page<ProductResponseDTO>> getProductsByCategory(@PathVariable Long categoryId ,
+                                                                          @PageableDefault(size = 10, page = 0, sort = "id")Pageable pageable){
+        Page<ProductResponseDTO> response = productService.getProductsByCategory(categoryId, pageable);
+        return ResponseEntity.ok(response);
+    }
+
+
 
 }
