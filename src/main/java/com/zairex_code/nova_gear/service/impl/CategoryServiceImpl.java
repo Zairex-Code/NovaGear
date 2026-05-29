@@ -54,10 +54,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryResponseDto getCategoryByName(String name){
-        return getAllCategories().stream()
-                .filter(category -> category.name().equalsIgnoreCase(name))
-                .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Category with name " + name + "doesn't found"));
+        Category category = categoryRepository.findByName(name).orElseThrow(()->new ResourceNotFoundException("Category with name " + name + "doesn't exist"));
+        return categoryMapper.toResponse(category);
     }
 
 }
