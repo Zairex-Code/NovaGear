@@ -15,6 +15,7 @@ public class ProductMapper {
         return new ProductResponseDTO(
                 product.getId(),
                 product.getName(),
+                product.getDescription(),
                 product.getPrice().doubleValue(),
                 (product.getCategory() != null)? product.getCategory().getName() : "Uncategorized",
                 product.getCreatedAt()
@@ -29,7 +30,7 @@ public class ProductMapper {
 
         Product product = new Product();
         product.setName(dto.name());
-        product.setDescription(dto.Description());
+        product.setDescription(dto.description());
         product.setPrice(BigDecimal.valueOf(dto.price()));
         product.setStock(dto.stock());
         product.setImageUrl(dto.imageUrl());

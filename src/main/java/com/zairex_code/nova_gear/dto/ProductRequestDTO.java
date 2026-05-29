@@ -9,10 +9,10 @@ public record ProductRequestDTO(
         String name,
 
         @Size(max = 255, message = "description length not more than 255 characters")
-        String Description,
+        String description,
 
         @Positive(message = "Price must be greater than Zero")
-        double price,
+        Double price,
 
         @NotNull(message = "El stock es obligatorio")
         @PositiveOrZero(message = "El stock no puede ser negativo")

@@ -4,17 +4,23 @@ import com.zairex_code.nova_gear.dto.ProductRequestDTO;
 import com.zairex_code.nova_gear.dto.ProductResponseDTO;
 import com.zairex_code.nova_gear.service.ProductService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
     private final ProductService productService;
+
+    @GetMapping
+    public ResponseEntity<Page<ProductResponseDTO>> getAllProducts(@PageableDefault(size = 10, page = 0, sort = "id") Pageable pageable){
+        Page<ProductResponseDTO> response = productService.getAllProducts(pageable);
+        return ResponseEntity.ok(response);
+    }
 
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -24,4 +30,7 @@ public class ProductController {
         ProductResponseDTO response = productService.createProduct(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+
+
+
 }

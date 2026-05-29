@@ -9,7 +9,9 @@ import com.zairex_code.nova_gear.mapper.ProductMapper;
 import com.zairex_code.nova_gear.repository.CategoryRepository;
 import com.zairex_code.nova_gear.repository.ProductRepository;
 import com.zairex_code.nova_gear.service.ProductService;
-import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,8 +45,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductResponseDTO> getAllProducts() {
-        return List.of();
+    @Transactional(readOnly = true)
+    public Page<ProductResponseDTO> getAllProducts(Pageable pageable) {
+        return productRepository.findAll(pageable)
+                .map(productMapper::toResponse);
     }
 
     @Override
