@@ -14,8 +14,8 @@ public record ProductRequestDTO(
         @Positive(message = "Price must be greater than Zero")
         Double price,
 
-        @NotNull(message = "El stock es obligatorio")
-        @PositiveOrZero(message = "El stock no puede ser negativo")
+        @NotNull(message = "Stock is mandatory")
+        @PositiveOrZero(message = "stock must be greater than Zero")
         Integer stock,
 
 
