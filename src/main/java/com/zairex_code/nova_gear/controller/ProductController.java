@@ -16,15 +16,17 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
     private final ProductService productService;
 
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
     @GetMapping
     public ResponseEntity<Page<ProductResponseDTO>> getAllProducts(@PageableDefault(size = 10, page = 0, sort = "id") Pageable pageable){
         Page<ProductResponseDTO> response = productService.getAllProducts(pageable);
         return ResponseEntity.ok(response);
     }
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
+
     @PostMapping
     public ResponseEntity<ProductResponseDTO> createProduct(@Valid @RequestBody ProductRequestDTO request){
         ProductResponseDTO response = productService.createProduct(request);

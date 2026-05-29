@@ -2,7 +2,6 @@ package com.zairex_code.nova_gear.service.impl;
 
 import com.zairex_code.nova_gear.dto.category.CategoryRequestDTO;
 import com.zairex_code.nova_gear.dto.category.CategoryResponseDto;
-import com.zairex_code.nova_gear.dto.product.ProductRequestDTO;
 import com.zairex_code.nova_gear.entity.Category;
 import com.zairex_code.nova_gear.exception.ResourceNotFoundException;
 import com.zairex_code.nova_gear.mapper.CategoryMapper;
@@ -56,7 +55,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryResponseDto getCategoryByName(String name){
-        Category category = categoryRepository.findByName(name).orElseThrow(()->new ResourceNotFoundException("Category with name " + name + "doesn't exist"));
+        Category category = categoryRepository.findByName(name)
+                .orElseThrow(()->new ResourceNotFoundException("Category with name " + name + "doesn't exist"));
         return categoryMapper.toResponse(category);
     }
 
