@@ -38,6 +38,7 @@ public class GlobalExceptionHandler {
     }
 
 
+
     @ExceptionHandler(Exception.class)
     public ProblemDetail handleGlobalException(Exception e){
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred");

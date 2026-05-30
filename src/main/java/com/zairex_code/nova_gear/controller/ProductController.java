@@ -4,6 +4,7 @@ import com.zairex_code.nova_gear.dto.product.ProductRequestDTO;
 import com.zairex_code.nova_gear.dto.product.ProductResponseDTO;
 import com.zairex_code.nova_gear.service.ProductService;
 import jakarta.validation.Valid;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -21,7 +22,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProductResponseDTO>> getAllProducts(@PageableDefault(size = 10, page = 0, sort = "id") Pageable pageable){
+    public ResponseEntity<Page<ProductResponseDTO>> getAllProducts(@ParameterObject @PageableDefault(size = 10, page = 0, sort = "id") Pageable pageable){
         Page<ProductResponseDTO> response = productService.getAllProducts(pageable);
         return ResponseEntity.ok(response);
     }
@@ -36,7 +37,7 @@ public class ProductController {
 
     @GetMapping("/category/{categoryId}")
     public ResponseEntity<Page<ProductResponseDTO>> getProductsByCategory(@PathVariable Long categoryId ,
-                                                                          @PageableDefault(size = 10, page = 0, sort = "id")Pageable pageable){
+                                                                          @ParameterObject @PageableDefault(size = 10, page = 0, sort = "id")Pageable pageable){
         Page<ProductResponseDTO> response = productService.getProductsByCategory(categoryId, pageable);
         return ResponseEntity.ok(response);
     }
