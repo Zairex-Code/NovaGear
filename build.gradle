@@ -35,6 +35,9 @@ dependencies {
 	//mapstruct
 	implementation 'org.mapstruct:mapstruct:1.6.3'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
+	// Documentación interactiva con Swagger UI (Para Spring Boot 4)
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.0'
 }
 
 tasks.named('test') {
