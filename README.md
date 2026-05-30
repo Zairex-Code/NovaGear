@@ -101,14 +101,20 @@ The NovaGear API is fully documented using OpenAPI standards. Once the applicati
 
 ### UI Previews
 
-<img width="600"  alt="Screencast from 2026-05-29 20-43-44" src="https://github.com/user-attachments/assets/bd7fb2a9-323a-45c1-b934-942385bbc08f" />
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/3238c542-a37e-4770-b9d5-36445aaf82e0" /><img width="400" height="213" alt="simplescreenrecorder-2026-05-29_21 03 21" src="https://github.com/user-attachments/assets/0bdb45c1-e024-4633-ae74-6d47469bbd25" />
 
 *^ Overview of the Swagger UI dashboard and we get all products request from db.*
 
-<img width="600" alt="Screencast from 2026-05-29 20-46-55" src="https://github.com/user-attachments/assets/73c6d6fc-2f45-4d75-948a-4c5ed20af23e" />
 
+
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/4de26712-b28d-450e-887b-4e95a15db097" /><img width="400" height="213" alt="simplescreenrecorder-2026-05-29_21 04 24" src="https://github.com/user-attachments/assets/48b1a3cb-4480-4df4-baba-d492d1ad39a8" /> 
 *^ we make a request: bring all products with category id 1*
 
-<img width="600" alt="Screencast from 2026-05-29 20-43-44" src="https://github.com/user-attachments/assets/fd424870-5f91-48fa-a6be-3082ce4829ca" />
+
+
+
+<img width="400" height="213" alt="simplescreenrecorder-2026-05-29_21 05 01" src="https://github.com/user-attachments/assets/5b31359c-8b17-476d-a047-988b4fb1dd9b" /> <img width="600"  alt="image" src="https://github.com/user-attachments/assets/d20ac7ee-a912-4746-b616-cc873937b1d1" />
 
 *^ we make a request: bring products wich category name are laptops*
