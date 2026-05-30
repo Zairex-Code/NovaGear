@@ -101,11 +101,14 @@ The NovaGear API is fully documented using OpenAPI standards. Once the applicati
 
 ### UI Previews
 
-<img width="400" height="210" alt="Screencast from 2026-05-29 20-43-44" src="https://github.com/user-attachments/assets/bd7fb2a9-323a-45c1-b934-942385bbc08f" />
+<img width="600"  alt="Screencast from 2026-05-29 20-43-44" src="https://github.com/user-attachments/assets/bd7fb2a9-323a-45c1-b934-942385bbc08f" />
+
 *^ Overview of the Swagger UI dashboard and we get all products request from db.*
 
-<img width="400" height="210" alt="Screencast from 2026-05-29 20-46-55" src="https://github.com/user-attachments/assets/73c6d6fc-2f45-4d75-948a-4c5ed20af23e" />
+<img width="600" alt="Screencast from 2026-05-29 20-46-55" src="https://github.com/user-attachments/assets/73c6d6fc-2f45-4d75-948a-4c5ed20af23e" />
+
 *^ we make a request: bring all products with category id 1*
 
-<img width="400" height="210" alt="Screencast from 2026-05-29 20-43-44" src="https://github.com/user-attachments/assets/fd424870-5f91-48fa-a6be-3082ce4829ca" />
+<img width="600" alt="Screencast from 2026-05-29 20-43-44" src="https://github.com/user-attachments/assets/fd424870-5f91-48fa-a6be-3082ce4829ca" />
+
 *^ we make a request: bring products wich category name are laptops*
